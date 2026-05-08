@@ -7,10 +7,6 @@
 // ============================================================
 
 using System;
-using System.Formats.Asn1;
-using System.Security.Cryptography;
-using System.Security.Cryptography.X509Certificates;
-using static System.Runtime.CompilerServices.RuntimeHelpers;
 
 
 class Program
@@ -19,6 +15,17 @@ class Program
     public float YesMeter = 0;
     public float Question = 0;
     public float Finished = 0;
+
+    static void Main(string[] args)
+    {
+        Program program = new Program();
+        program.Start();
+        
+        while (program.Finished == 0)
+        {
+            program.Update();
+        }
+    }
 
     public void Start()
     {
@@ -30,58 +37,54 @@ class Program
     }
       
     public void Update()
+    {
+        //This is the first question
+        //I don't know why there is a fire cause this is how it worked in unity, so idk?
+        if (Question == 0) 
         {
-    //This is the first question
-    //I don't know why there is a fire cause this is how it worked in unity, so idk?
-    if (Question == 0) 
-       {
             Console.WriteLine("Have you ever told a lie?");
-        if (Console.Write("Yes"));
-        {
-            Console.WriteLine("Thank you for the response");
-            Question += 1;
-            YesMeter += 1;
-        }
-        else if (Console.Write("No"))
-        {
-            Console.WriteLine("Thank you for the response");
-            Question += 1;
-        }
-        else ();
-            {
-                Console.WriteLine("That is not a valid anwser");
-            }
-
-        }
-    //The second question
-    if (Question == 1)
-        {
-            Console.WriteLine("Have you commited a crime?");
-            if (Console.Write("Yes"))
+            string answer = Console.ReadLine();
+            if (answer == "Y" || answer == "Yes")
             {
                 Console.WriteLine("Thank you for the response");
                 Question += 1;
                 YesMeter += 1;
             }
-            else if (Console.Write("No"))
+            else if (answer == "N" || answer == "No")
             {
                 Console.WriteLine("Thank you for the response");
                 Question += 1;
             }
-            else ()
+            else
             {
                 Console.WriteLine("That is not a valid anwser");
             }
         }
-    if (Question == 2)
+        //The second question
+        else if (Question == 1)
+        {
+            Console.WriteLine("Have you commited a crime?");
+            string answer = Console.ReadLine();
+            if (answer == "Y" || answer == "Yes")
+            {
+                Console.WriteLine("Thank you for the response");
+                Question += 1;
+                YesMeter += 1;
+            }
+            else if (answer == "N" || answer == "No")
+            {
+                Console.WriteLine("Thank you for the response");
+                Question += 1;
+            }
+            else
+            {
+                Console.WriteLine("That is not a valid anwser");
+            }
+        }
+        else if (Question == 2)
         {
             Console.WriteLine("Thank you for taking this small survey");
             Finished += 1;
-            if (Finished == 1)
-            {
-                //Ends the program
-                return;
-            }
         }
     }
 }
