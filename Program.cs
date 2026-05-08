@@ -1,70 +1,90 @@
 // ============================================================
 // C# Final Project 2026
-// Name:
+// Name:Gabriel
 // Date:
-// Project Title:
-// Description: (Write 1-2 sentences explaining what your program does)
+// Project Title: Survey
+// Description: Anwser a small survey
 // ============================================================
 
 using System;
 
+
 class Program
 {
+    //The varibles are set here
+    public float YesMeter = 0;
+    public float Question = 0;
+    public float Finished = 0;
+
     static void Main(string[] args)
     {
-        // ---- SECTION 1: Setup / Variables ----
-        // Declare your starting variables here.
-        // Examples:
-        //   string playerName = "";
-        //   int score = 0;
+        Program program = new Program();
+        program.Start();
+        
+        while (program.Finished == 0)
+        {
+            program.Update();
+        }
+    }
 
+    public void Start()
+    {
+        //This is the Console telling the user the rules
+        Console.WriteLine("You are entering a test where you will awnser yes or no");
+        Console.WriteLine("To awnser yes press Y");
+        Console.WriteLine("To awnser no press N");
 
-
-        // ---- SECTION 2: Welcome Message ----
-        // Greet the user and explain what your program does.
-
-        Console.WriteLine("Welcome!");
-        Console.WriteLine("----------------------------");
-
-
-
-        // ---- SECTION 3: Get Input from User ----
-        // Use Console.ReadLine() to ask the user for information.
-        // Remember: Console.ReadLine() always returns a string.
-        // Use int.Parse() or double.Parse() if you need a number.
-
-        // Examples:
-        //   Console.Write("What is your name? ");
-        //   string playerName = Console.ReadLine();
-        //
-        //   Console.Write("Enter a number: ");
-        //   int score = int.Parse(Console.ReadLine());
-
-
-
-        // ---- SECTION 4: Logic (if / else if / else) ----
-        // Use if/else if/else to make decisions based on user input or variables.
-
-        // Example:
-        //   if (score >= 90)
-        //   {
-        //       Console.WriteLine("Great job!");
-        //   }
-        //   else if (score >= 70)
-        //   {
-        //       Console.WriteLine("Good work!");
-        //   }
-        //   else
-        //   {
-        //       Console.WriteLine("Keep practicing!");
-        //   }
-
-
-
-        // ---- SECTION 5: Final Output ----
-        // Print a final message, result, or summary to the user.
-
-        Console.WriteLine("----------------------------");
-        Console.WriteLine("Thanks for using my program!");
+    }
+      
+    public void Update()
+    {
+        //This is the first question
+        //I don't know why there is a fire cause this is how it worked in unity, so idk?
+        if (Question == 0) 
+        {
+            Console.WriteLine("Have you ever told a lie?");
+            string answer = Console.ReadLine();
+            if (answer == "Y" || answer == "Yes")
+            {
+                Console.WriteLine("Thank you for the response");
+                Question += 1;
+                YesMeter += 1;
+            }
+            else if (answer == "N" || answer == "No")
+            {
+                Console.WriteLine("Thank you for the response");
+                Question += 1;
+            }
+            else
+            {
+                Console.WriteLine("That is not a valid anwser");
+            }
+        }
+        //The second question
+        else if (Question == 1)
+        {
+            Console.WriteLine("Have you commited a crime?");
+            string answer = Console.ReadLine();
+            if (answer == "Y" || answer == "Yes")
+            {
+                Console.WriteLine("Thank you for the response");
+                Question += 1;
+                YesMeter += 1;
+            }
+            else if (answer == "N" || answer == "No")
+            {
+                Console.WriteLine("Thank you for the response");
+                Question += 1;
+            }
+            else
+            {
+                Console.WriteLine("That is not a valid anwser");
+            }
+        }
+        else if (Question == 2)
+        {
+            Console.WriteLine("Thank you for taking this small survey");
+            Finished += 1;
+        }
     }
 }
